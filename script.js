@@ -29,14 +29,16 @@ function addTask(text) {
   ul.append(li);
 
   checkbox.onchange = (e) => {
-    if (checkbox.checked) strikeTask(span);
+    // if (checkbox.checked) {
+    //   span.style.textDecoration = 'line-through'
+    // } else {
+    //   span.style.textDecoration = null;
+    // }
+    span.style.textDecoration = (checkbox.checked? 'line-through': null);
   }
   
 }
 
-function strikeTask(element) {
-  element.style.textDecoration = 'line-through';
-}
 
 
 
