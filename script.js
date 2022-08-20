@@ -4,11 +4,18 @@ const ul = document.getElementsByClassName('todoList')[0];
 
 addBtn.onclick = () => {
   if (!input.value) return;
-  
+
   addTask(input.value);
   input.value = '';
 };
 // addBtn.addEventListener('click',() => addTask(document.getElementById('taskInput').value));
+
+input.onkeydown = (e) => {
+  if (e.key !== "Enter" || !input.value) return;
+
+  addTask(input.value);
+  input.value = '';
+}
 
 function addTask (text) {
   const li = document.createElement('li');
