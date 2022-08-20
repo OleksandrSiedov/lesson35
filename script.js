@@ -17,7 +17,8 @@ input.onkeydown = (e) => {
   input.value = '';
 }
 
-function addTask (text) {
+
+function addTask(text) {
   const li = document.createElement('li');
   const checkbox = document.createElement('input');
   const span = document.createElement('span');
@@ -26,7 +27,17 @@ function addTask (text) {
   checkbox.type = 'checkbox';
   span.innerText = text;
   ul.append(li);
+
+  checkbox.onchange = (e) => {
+    if (checkbox.checked) strikeTask(span);
+  }
+  
 }
+
+function strikeTask(element) {
+  element.style.textDecoration = 'line-through';
+}
+
 
 
 
