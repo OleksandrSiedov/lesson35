@@ -1,10 +1,15 @@
 const input = document.getElementById('taskInput');
 const [addBtn] = document.getElementsByClassName('addBtn');
 const ul = document.getElementsByClassName('todoList')[0];
-const tasks = [];
+const tasks = JSON.parse(localStorage.getItem('tasks')) || []  ;
+
+tasks.forEach(addTask);
 
 addBtn.onclick = () => {
   if (!input.value) return;
+
+  tasks.push(input.value);
+  localStorage.tasks = JSON.stringify(tasks);
 
   addTask(input.value);
   input.value = '';
@@ -28,9 +33,6 @@ function addTask(text) {
   checkbox.type = 'checkbox';
   span.innerText = text;
   ul.append(li);
-
-  tasks.push(text);
-  localStorage.tasks = JSON.stringify(tasks);
 
   checkbox.onchange = (e) => {
     // if (checkbox.checked) {
